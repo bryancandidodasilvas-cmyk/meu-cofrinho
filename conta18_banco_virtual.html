@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#071b14"><title>Conta 18</title>
+<style>
+:root{--bg:#071b14;--panel:#10291f;--panel2:#163629;--green:#48d58a;--mint:#a8f0c7;--text:#f3fbf6;--muted:#9db7a8;--line:#284638;--red:#ff8585}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);min-height:100vh}
+.app{max-width:500px;margin:auto;padding:18px 16px 38px}.header{display:flex;justify-content:space-between;align-items:center;padding:8px 2px 20px}.brand{font-weight:850;font-size:21px;letter-spacing:-.5px}.brand span{color:var(--green)}.avatar{width:40px;height:40px;border-radius:50%;background:#214b37;display:grid;place-items:center;color:var(--mint);font-weight:800}
+.hello{font-size:14px;color:var(--muted);margin:4px 0 14px}.balance{background:linear-gradient(140deg,#1b6845,#103d2b 75%);border-radius:24px;padding:22px;box-shadow:0 16px 35px #0003;position:relative;overflow:hidden}.balance:after{content:"";position:absolute;width:180px;height:180px;border:1px solid #ffffff18;border-radius:50%;right:-65px;top:-75px;box-shadow:0 0 0 25px #ffffff08,0 0 0 50px #ffffff05}
+.eyebrow{font-size:12px;color:#d1f5df;letter-spacing:.08em;font-weight:700}.amount{font-size:36px;font-weight:850;margin:9px 0 17px;letter-spacing:-1px}.balance-foot{display:flex;justify-content:space-between;gap:10px;color:#d3f4df;font-size:12px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}.action{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:15px 12px;color:var(--text);font-size:14px;font-weight:750;text-align:left}.action .ico{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:#214b37;color:var(--mint);font-size:20px;margin-bottom:10px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:19px;padding:18px;margin:14px 0}.section-title{font-size:16px;font-weight:800;margin:0 0 14px}.goal-row{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:13px;color:var(--muted)}.goal-row strong{color:var(--mint)}.track{height:9px;background:#284638;border-radius:20px;overflow:hidden;margin:12px 0}.fill{height:100%;background:var(--green);width:0;border-radius:20px}.muted{color:var(--muted);font-size:12px}
+input,select{width:100%;padding:14px;border-radius:12px;border:1px solid #355747;background:#091d15;color:white;font-size:16px;outline:none}label{display:block;font-size:13px;color:#c2d8ca;margin:14px 0 7px}
+.primary,.secondary,.danger{width:100%;border:0;border-radius:13px;padding:14px;font-size:15px;font-weight:800;margin-top:15px}.primary{background:var(--green);color:#082216}.secondary{background:#234735;color:#e8f8ee}.danger{background:#492626;color:#ffdada}
+.tabs{display:flex;gap:8px;margin:16px 0}.tab{flex:1;background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:12px;padding:11px 6px;font-weight:700}.tab.active{background:#1d4b35;border-color:#2d7952;color:var(--mint)}
+.tx{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.tx:last-child{border-bottom:0}.txicon{width:39px;height:39px;border-radius:13px;background:#214b37;display:grid;place-items:center;color:var(--mint);font-size:18px}.txmain{flex:1;min-width:0}.txmain b{display:block;font-size:14px}.txmain small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.txvalue{font-weight:800;font-size:14px}.in{color:var(--green)}.out{color:var(--red)}
+.modal{position:fixed;inset:0;background:#0009;display:none;align-items:flex-end;justify-content:center;padding:12px;z-index:5}.modal.show{display:flex}.sheet{width:100%;max-width:480px;background:#10291f;border:1px solid var(--line);border-radius:23px;padding:21px 19px calc(20px + env(safe-area-inset-bottom));max-height:90vh;overflow:auto}.sheethead{display:flex;justify-content:space-between;align-items:center}.close{background:#234735;color:white;border:0;border-radius:50%;width:34px;height:34px;font-size:19px}.empty{text-align:center;padding:22px 5px;color:var(--muted);font-size:13px}.foot{text-align:center;color:#6f8e7b;font-size:11px;margin:20px 0}
+</style></head>
+<body><main class="app">
+ <header class="header"><div class="brand">conta<span>18</span></div><div class="avatar">18</div></header>
+ <div class="hello">Olá! Este é seu espaço para juntar dinheiro para os 18 anos 🎉</div>
+ <section class="balance">
+  <div class="eyebrow">SALDO DA SUA CONTA</div><div class="amount" id="balance">R$ 0,00</div>
+  <div class="balance-foot"><span>Conta digital de organização</span><span>•••• 2028</span></div>
+ </section>
+ <div class="actions">
+  <button class="action" onclick="openModal('deposit')"><span class="ico">＋</span>Adicionar dinheiro</button>
+  <button class="action" onclick="openModal('withdraw')"><span class="ico">−</span>Registrar retirada</button>
+ </div>
+ <section class="card">
+  <h2 class="section-title">Meta da festa 🎂</h2>
+  <div class="goal-row"><span id="goalText">Meta: R$ 3.000,00</span><strong id="percent">0%</strong></div>
+  <div class="track"><div class="fill" id="fill"></div></div>
+  <div class="goal-row"><span id="saved">R$ 0,00 guardados</span><span id="left">Faltam R$ 3.000,00</span></div>
+ </section>
+ <div class="tabs"><button class="tab active" id="tabAll" onclick="setFilter('all')">Tudo</button><button class="tab" id="tabIn" onclick="setFilter('in')">Entradas</button><button class="tab" id="tabOut" onclick="setFilter('out')">Saídas</button></div>
+ <section class="card" style="margin-top:0"><div class="row" style="display:flex;justify-content:space-between;align-items:center"><h2 class="section-title" style="margin:0">Extrato da conta</h2><span class="muted" id="count">0 movimentações</span></div><div id="transactions" class="empty">Nenhuma movimentação ainda.<br>Toque em “Adicionar dinheiro” para começar.</div></section>
+ <section class="card"><h2 class="section-title">Configurações</h2><label for="goalInput">Minha meta (R$)</label><select id="goalInput"><option value="2200">2.200</option><option value="3000" selected>3.000</option><option value="4000">4.000</option><option value="5000">5.000</option><option value="6000">6.000</option></select><button class="secondary" onclick="saveGoal()">Salvar meta</button><button class="secondary" onclick="backup()">Exportar meu extrato (backup)</button><button class="secondary" onclick="document.getElementById('restoreFile').click()">Restaurar backup</button><input id="restoreFile" type="file" accept="application/json" hidden></section>
+ <p class="foot">conta18 · Seu planejamento, seu futuro.<br>Não é uma conta bancária real e não movimenta dinheiro.</p>
+</main>
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="sheet"><div class="sheethead"><h2 id="modalTitle" style="font-size:19px;margin:0">Adicionar dinheiro</h2><button class="close" onclick="closeModal()">×</button></div><label for="txAmount">Valor (R$)</label><input id="txAmount" inputmode="decimal" placeholder="Ex.: 100,50"><label for="txDate">Data</label><input id="txDate" type="date"><label for="txNote">Descrição (opcional)</label><input id="txNote" maxlength="45" placeholder="Ex.: economia do mês"><button class="primary" id="confirm">Confirmar depósito</button></div></div>
+<script>
+const KEY='conta18_movements_v2',GKEY='conta18_goal_v2';let movements=[];let mode='deposit',filter='all';
+try{movements=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(movements))movements=[]}catch(e){movements=[]}
+const $=id=>document.getElementById(id),fmt=n=>Number(n).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+$('goalInput').value=localStorage.getItem(GKEY)||'3000';$('txDate').value=new Date().toISOString().slice(0,10);
+function balanceCents(){return movements.reduce((s,m)=>s+(m.type==='in'?m.cents:-m.cents),0)}
+function persist(){localStorage.setItem(KEY,JSON.stringify(movements));render()}
+function render(){
+ let bal=balanceCents()/100,goal=Number($('goalInput').value),saved=Math.max(0,bal),p=Math.min(100,saved/goal*100);
+ $('balance').textContent=fmt(bal);$('goalText').textContent='Meta: '+fmt(goal);$('percent').textContent=p.toFixed(1).replace('.',',')+'%';$('fill').style.width=p+'%';$('saved').textContent=fmt(saved)+' guardados';$('left').textContent='Faltam '+fmt(Math.max(0,goal-saved));
+ let list=movements.filter(m=>filter==='all'||m.type===filter).sort((a,b)=>b.date.localeCompare(a.date)||b.id-a.id);$('count').textContent=list.length+' movimentaç'+(list.length===1?'ão':'ões');
+ let root=$('transactions');root.innerHTML='';if(!list.length){root.className='empty';root.innerHTML='Nenhuma movimentação nesta lista.';return}root.className='';
+ list.forEach(m=>{let row=document.createElement('div');row.className='tx';let ic=document.createElement('div');ic.className='txicon';ic.textContent=m.type==='in'?'↙':'↗';let main=document.createElement('div');main.className='txmain';let b=document.createElement('b');b.textContent=m.note||(m.type==='in'?'Depósito':'Retirada');let sm=document.createElement('small');sm.textContent=new Date(m.date+'T12:00:00').toLocaleDateString('pt-BR');main.append(b,sm);let val=document.createElement('div');val.className='txvalue '+(m.type==='in'?'in':'out');val.textContent=(m.type==='in'?'+':'−')+fmt(m.cents/100);row.append(ic,main,val);let del=document.createElement('button');del.className='close';del.style.marginLeft='7px';del.textContent='⋯';del.title='Opções';del.onclick=()=>{if(confirm('Apagar esta movimentação do extrato?')){movements=movements.filter(x=>x.id!==m.id);persist()}};row.append(del);root.append(row)});
+}
+function openModal(which){mode=which;$('modalTitle').textContent=which==='in'?'Adicionar dinheiro':'Registrar retirada';$('confirm').textContent=which==='in'?'Confirmar depósito':'Confirmar retirada';$('txAmount').value='';$('txNote').value='';$('txDate').value=new Date().toISOString().slice(0,10);$('modal').classList.add('show');setTimeout(()=>$('txAmount').focus(),100)}
+function closeModal(){$('modal').classList.remove('show')}
+$('confirm').onclick=()=>{let raw=$('txAmount').value.trim().replace(',','.'),num=Number(raw),date=$('txDate').value,cents=Math.round(num*100);if(!Number.isFinite(num)||cents<=0){alert('Digite um valor válido, por exemplo 100 ou 100,50.');return}if(!date){alert('Escolha a data.');return}if(mode==='out'&&cents>balanceCents()){alert('O valor da retirada é maior que o saldo disponível.');return}movements.push({id:Date.now(),type:mode==='in'?'in':'out',cents,date,note:$('txNote').value.trim()});persist();closeModal()};
+function setFilter(f){filter=f;['All','In','Out'].forEach((x)=>$('tab'+x).classList.toggle('active',({All:'all',In:'in',Out:'out'})[x]===f));render()}
+function saveGoal(){localStorage.setItem(GKEY,$('goalInput').value);render();alert('Meta atualizada!')}
+function backup(){let blob=new Blob([JSON.stringify({movements,goal:$('goalInput').value},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='backup-conta18.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$('restoreFile').onchange=async e=>{let f=e.target.files[0];if(!f)return;try{let d=JSON.parse(await f.text());if(!Array.isArray(d.movements))throw Error();movements=d.movements.filter(m=>Number.isInteger(m.cents)&&m.cents>0&&['in','out'].includes(m.type)&&typeof m.date==='string');if(['2200','3000','4000','5000','6000'].includes(String(d.goal)))$('goalInput').value=d.goal;localStorage.setItem(GKEY,$('goalInput').value);persist();alert('Extrato restaurado com sucesso!')}catch(err){alert('Não foi possível restaurar esse arquivo.')}e.target.value=''};
+render();
+</script></body></html>
